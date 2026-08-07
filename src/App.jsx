@@ -21,7 +21,7 @@ function App() {
     setAnswer("");
 
     try {
-      const response = await fetch("https://askmynotes-app.onrender.com", {
+      const response = await fetch("https://askmynotes-app.onrender.com/ask", {
         method: "POST",
 
         headers: {

@@ -1,13 +1,9 @@
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 
-app = FastAPI(
-    title="Student Question API",
-    description="A simple FastAPI backend for a React application",
-    version="1.0.0",
-)
 
 
 # React runs on port 5173.
@@ -57,7 +53,9 @@ def ask_question(request: QuestionRequest):
             answer="Please enter a question.",
         )
 
+    category = model.predict([cleaned_question])[0]
+
     return QuestionResponse(
         question=cleaned_question,
-        answer=f'Your question "{cleaned_question}" was received successfully.',
+        answer=f"Your question belongs to the category: {category}",
     )

@@ -42,7 +42,8 @@ def health_check():
         "status": "healthy"
     }
 
-
+import joblib
+model = joblib.load("model.pkl")
 @app.post("/ask", response_model=QuestionResponse)
 def ask_question(request: QuestionRequest):
     cleaned_question = request.question.strip()

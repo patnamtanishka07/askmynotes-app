@@ -43,7 +43,7 @@ def health_check():
     }
 
 import joblib
-model = joblib.load("askmynotes_classifiergit .pkl")
+model = joblib.load("askmynotes_classifier.pkl")
 @app.post("/ask", response_model=QuestionResponse)
 def ask_question(request: QuestionRequest):
     cleaned_question = request.question.strip()
